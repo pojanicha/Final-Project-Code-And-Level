@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+      HealthManager.health = 3;
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

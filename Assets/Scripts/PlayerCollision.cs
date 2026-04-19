@@ -19,8 +19,8 @@ public class PlayerCollision : MonoBehaviour
 
             if (HealthManager.health <= 0)
             {
-                GameManager.isGameOver = true;
-                gameObject.SetActive(false);
+                StartCoroutine(Die());
+             
             }
 
             else
@@ -46,6 +46,14 @@ public class PlayerCollision : MonoBehaviour
             Physics2D.IgnoreLayerCollision(7,8,false);
         }
 
+
+        IEnumerator Die()
+        { 
+            yield return new WaitForSeconds(0.1f);
+            
+            GameManager.isGameOver = true;
+            gameObject.SetActive(false);
+        }
 
 
    }

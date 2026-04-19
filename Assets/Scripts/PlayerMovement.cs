@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
         Flip();
 
-
     }
 
 
@@ -70,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         }
     
     }
+    
 
 
   

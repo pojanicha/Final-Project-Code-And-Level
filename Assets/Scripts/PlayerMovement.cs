@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool doubleJump;
     [SerializeField] private float doubleJumpForce = 6.5f;
+
+    private bool isInvicible = false;   
 
 
 
@@ -69,8 +73,66 @@ public class PlayerMovement : MonoBehaviour
         }
     
     }
-    
 
 
-  
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RespawnTrigger") && !isInvicible)
+        {
+            TakeDamage();
+
+        }
+
+
+        void TakeDamage()
+        {
+            isInvicible = true;
+            HealthManager.health--;
+
+            if (HealthManager.health <= 0)
+            {
+                StartCoroutine(Die());
+
+            }
+
+            else
+            {
+                Respawn();
+                StartCoroutine(GetHurt());
+            }
+        }
+
+        void Respawn()
+        {
+            transform.position = RespawnController.Instance.respawnPoint.position;
+        }
+
+
+
+
+
+        IEnumerator GetHurt()
+        {
+            Physics2D.IgnoreLayerCollision(7, 8, true);
+            yield return new WaitForSeconds(3);
+            Physics2D.IgnoreLayerCollision(7, 8, false);
+
+            isInvicible = false;
+        }
+
+
+        IEnumerator Die()
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            GameManager.isGameOver = true;
+            gameObject.SetActive(false);
+        }
+
+
+    }
+
+
+
 }

@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    //Respawn Code
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -83,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
             TakeDamage();
 
         }
-
 
         void TakeDamage()
         {
@@ -108,10 +108,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = RespawnController.Instance.respawnPoint.position;
         }
 
-
-
-
-
         IEnumerator GetHurt()
         {
             Physics2D.IgnoreLayerCollision(7, 8, true);
@@ -120,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
 
             isInvicible = false;
         }
-
 
         IEnumerator Die()
         {

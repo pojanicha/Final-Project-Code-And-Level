@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private float horizontal;
     [SerializeField] private float speed = 8f;
@@ -17,7 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private bool doubleJump;
     [SerializeField] private float doubleJumpForce = 6.5f;
 
-    private bool isInvicible = false;   
+    private bool isInvicible = false;
+
+    public int currentItems;
+
 
 
 
@@ -128,6 +131,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+    //Item Collection Code
+    public void AddItem()
+    {
+        currentItems++; // เพิ่มจำนวนไอเท็มเมื่อผู้เล่นเก็บไอเท็ม
+        Debug.Log("Current Items: " + currentItems);
+    }
 
 
 }

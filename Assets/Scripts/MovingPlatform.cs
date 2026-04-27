@@ -6,6 +6,8 @@ public class MovingPlatform : MonoBehaviour
     public float moveSpeed = 5f;
     private int index;
     private int direction = 1;
+    private Transform playerOnPlatform;
+    private Vector3 lastPosition;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +43,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            playerOnPlatform = collision.transform;
         }
     }
 
@@ -49,12 +51,21 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            playerOnPlatform = null;
         }
     }
 
 
+    void LateUpdate()
+    {
+        Vector3 delta = transform.position - lastPosition;
 
+        if (playerOnPlatform != null)
+        {
+            playerOnPlatform.position += delta;
+        }
+        lastPosition = transform.position;
+    }
 
 
 

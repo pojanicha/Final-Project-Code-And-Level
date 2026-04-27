@@ -9,6 +9,7 @@ TagManager:
   - Ladder
   - FallingPlatform
   - RespawnTrigger
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

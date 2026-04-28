@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float GravityScale;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour
 
     public int currentItems;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = GravityScale;
+    }
 
 
 
@@ -54,6 +60,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y  * Time.fixedDeltaTime;
+        }
+       
     }
 
     private bool IsGrounded()
@@ -88,47 +100,46 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        void TakeDamage()
+    }
+
+    void TakeDamage()
+    {
+        isInvicible = true;
+        HealthManager.health--;
+
+        if (HealthManager.health <= 0)
         {
-            isInvicible = true;
-            HealthManager.health--;
+            StartCoroutine(Die());
 
-            if (HealthManager.health <= 0)
-            {
-                StartCoroutine(Die());
-
-            }
-
-            else
-            {
-                Respawn();
-                StartCoroutine(GetHurt());
-            }
         }
 
-        void Respawn()
+        else
         {
-            transform.position = RespawnController.Instance.respawnPoint.position;
+            Respawn();
+            StartCoroutine(GetHurt());
         }
+    }
 
-        IEnumerator GetHurt()
-        {
-            Physics2D.IgnoreLayerCollision(7, 8, true);
-            yield return new WaitForSeconds(3);
-            Physics2D.IgnoreLayerCollision(7, 8, false);
+    void Respawn()
+    {
+        transform.position = RespawnController.Instance.respawnPoint.position;
+    }
 
-            isInvicible = false;
-        }
+    IEnumerator GetHurt()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+        yield return new WaitForSeconds(3);
+        Physics2D.IgnoreLayerCollision(7, 8, false);
 
-        IEnumerator Die()
-        {
-            yield return new WaitForSeconds(0.1f);
+        isInvicible = false;
+    }
 
-            GameManager.isGameOver = true;
-            gameObject.SetActive(false);
-        }
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.1f);
 
-
+        GameManager.isGameOver = true;
+        gameObject.SetActive(false);
     }
 
 

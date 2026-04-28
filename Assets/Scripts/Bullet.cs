@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
 
         if (player == null)
         {
-            // หายตัวไปเลยกัน error
             Destroy(gameObject);
             return;
         }

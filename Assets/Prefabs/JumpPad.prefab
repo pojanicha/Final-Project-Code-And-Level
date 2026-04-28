@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1417500968380852554}
   - component: {fileID: 6358085121604441273}
-  - component: {fileID: 632389280478420056}
   - component: {fileID: 976277929265605262}
+  - component: {fileID: 5743299146262628936}
   m_Layer: 0
   m_Name: JumpPad
   m_TagString: Untagged
@@ -93,8 +93,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &632389280478420056
-CircleCollider2D:
+--- !u!114 &976277929265605262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493384233710943843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e5bf12fc551844994cf228ee729361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpPad
+  bounce: 20
+--- !u!60 &5743299146262628936
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,18 +140,33 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.017627478, y: -0.10828447}
-  m_Radius: 1.1886499
---- !u!114 &976277929265605262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8493384233710943843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e5bf12fc551844994cf228ee729361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JumpPad
-  bounce: 12
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0.033333335}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.4666667, y: 0.8666667}
+    newSize: {x: 1.375, y: 0.8125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.19981098, y: 0.44442177}
+      - {x: -0.26299, y: 0.41198063}
+      - {x: -0.48670197, y: 0.31669927}
+      - {x: -0.68159163, y: 0.15430588}
+      - {x: -0.7507496, y: -0.051717997}
+      - {x: -0.7507496, y: -0.16897893}
+      - {x: -0.7456031, y: -0.17861462}
+      - {x: -0.5350152, y: -0.34352273}
+      - {x: -0.3543501, y: -0.4654734}
+      - {x: 0.4017645, y: -0.46344823}
+      - {x: 0.45675945, y: -0.35247707}
+      - {x: 0.7050266, y: -0.22136569}
+      - {x: 0.7737179, y: -0.114947796}
+      - {x: 0.76039124, y: 0.012973309}
+      - {x: 0.57867146, y: 0.27689123}
+      - {x: 0.37244856, y: 0.3880689}
+      - {x: 0.2771424, y: 0.40748304}
+  m_UseDelaunayMesh: 1

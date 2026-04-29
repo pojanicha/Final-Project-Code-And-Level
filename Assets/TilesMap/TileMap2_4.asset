@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: OneWay_Platforms_1
+  m_Name: TileMap2_4
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 7122597022617935259, guid: eec463c7a00d7a64c9dae6f75a079710, type: 3}
+  m_Sprite: {fileID: -1605688791467125262, guid: a669f6ccfb2d5a447809c980b1262b8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

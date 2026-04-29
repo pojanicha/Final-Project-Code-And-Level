@@ -22,11 +22,11 @@ public class ShootingEnemy : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
 
-        if (distance <= 10f) // Check if player is within 10 units
+        if (distance <= 7f) // Check if player is within 7 units
         {
             timer += Time.deltaTime;
 
-            if (timer >= 2f) // Fire every 2 seconds
+            if (timer >= 1.5f) // Fire every 1.5 seconds
             {
                 timer = 0f; // Reset the timer
                 Shoot();

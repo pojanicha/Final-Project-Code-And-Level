@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     public float force;  
-    public float timer;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,18 +29,13 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= 10f) // Destroy the bullet after 10 seconds
-        {
-            Destroy(gameObject);
-        }
+       
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
         {
             // Handle player hit logic here (e.g., reduce health)
             Destroy(gameObject); // Destroy the bullet on impact
